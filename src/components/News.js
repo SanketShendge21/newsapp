@@ -115,7 +115,7 @@ export class News extends Component {
           {!this.state.loading && this.state.articles.map((element)=>{
             return  <div className="col-md-4" key={element.url}>
             <NewsItem  title={element.title?element.title.slice(0,45):""} description={element.description?element.description.slice(0,90):""}
-            imageUrl={!element.urlToImage?"https://images.macrumors.com/t/jHD1aGfXq86Ln_kfzTyWIF68vOo=/2368x/article-new/2021/02/Safari-Technology-Preview-Feature.jpg":element.urlToImage} newsUrl={element.url}></NewsItem>
+            imageUrl={!element.urlToImage?"https://images.macrumors.com/t/jHD1aGfXq86Ln_kfzTyWIF68vOo=/2368x/article-new/2021/02/Safari-Technology-Preview-Feature.jpg":element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}></NewsItem>
             </div>
           })}
 
