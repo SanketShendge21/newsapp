@@ -45,15 +45,20 @@ export class News extends Component {
     "content": "Ive read your previous responses to letters on tipping, and my thoughts are simple: Tipping is dependent on the service given. I wont tip at a deli counter, but I will tip more in a diner. I see no r… [+5729 chars]"
     }
     ];
-  constructor(){
 
-    super();
+    capitalizeFirstLetter = (string) =>{
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  constructor(props){
+    
+    super(props);
     // console.log("Hello im a constructor from news component");
     this.state = {
       articles: [],
       loading: false,
       page : 1
     }
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
   }
 
   async updateNews(){
@@ -83,13 +88,13 @@ export class News extends Component {
       this.updateNews();
     }
     
-  
+ 
 
   render() {
     return (
 
         <div className='container'>
-          <h2 className='text-center' style={{margin:'40px 0px'}}>NewsMonkey - Top Headlines </h2>
+          <h1 className="text-center" style={{ margin: '35px 0px' }}>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
            {this.state.loading && <Spinner />} {/* this says if loading true then show spinner component else not */}
           
         {/* iterating over two elements as my articles contains only two objects */}
